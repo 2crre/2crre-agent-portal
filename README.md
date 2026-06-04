@@ -1,4 +1,4 @@
-[index.html](https://github.com/user-attachments/files/28574190/index.html)
+[index.html](https://github.com/user-attachments/files/28602920/index.html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1552,9 +1552,13 @@ document.getElementById('btn-export-csv').addEventListener('click', async () => 
   btn.disabled = false;
 });
 
+function closeBioModal() {
+  document.getElementById('bio-detail-modal').classList.remove('open');
+}
+
 document.getElementById('bio-detail-modal').addEventListener('click', (e) => {
   if (e.target.id === 'close-bio-modal' || e.target === e.currentTarget) {
-    document.getElementById('bio-detail-modal').classList.remove('open');
+    closeBioModal();
   }
 });
 </script>
@@ -1614,12 +1618,12 @@ document.getElementById('bio-detail-modal').addEventListener('click', (e) => {
 </div>
 
 <!-- BIO DETAIL MODAL -->
-<div class="modal-backdrop" id="bio-detail-modal">
+<div class="modal-backdrop" id="bio-detail-modal" onclick="if(event.target===this)closeBioModal()">
   <div class="modal" style="max-width:640px;max-height:80vh;overflow-y:auto">
     <h3 id="bio-modal-title"></h3>
     <div id="bio-modal-body"></div>
     <div class="modal-actions" style="margin-top:20px">
-      <button class="btn-cancel" id="close-bio-modal">Close</button>
+      <button class="btn-cancel" onclick="closeBioModal()">Close</button>
     </div>
   </div>
 </div>
